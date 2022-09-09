@@ -13,9 +13,26 @@ class Solution:
     def isPalindrome(self, x: int) -> bool:
         return str(x) == str(x)[::-1]
 
-    #Question: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+    #QUESTION: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
     def removeDuplicates(self, nums: List[int]) -> int:
         for ele in nums:
             while nums.count(ele) > 1:
                 nums.remove(ele)
         return len(nums)
+
+    #QUESTION: https://leetcode.com/problems/crawler-log-folder
+    def minOperations(self, logs: List[str]) -> int:
+        i = 0
+        for command in logs:
+            if command == "./":
+                pass
+            elif command == "../":
+                i = i - 1
+                if i < 0:
+                    i = 0
+            else:
+                i = i + 1
+        if i < 0:
+            return 0
+        else:
+            return i
