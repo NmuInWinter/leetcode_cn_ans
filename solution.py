@@ -1,3 +1,4 @@
+from audioop import reverse
 from typing import List
 
 
@@ -36,3 +37,27 @@ class Solution:
             return 0
         else:
             return i
+
+
+# Below: SUDA
+
+def func1(n:int) -> int:
+    res = 0
+    for i in range(0,n+1):
+       if not (i % 9 == 0 or '9' in str(i).split()):
+           res = res + i * i
+    return res
+
+def func2(lst: List) -> int:
+    if len(lst) == 0:
+        return 0
+    count = {}
+    for nums in lst:
+        count[nums] =  count.get(nums, 0) + 1
+    count = sorted(count, key=count.get, reverse=True)
+    return count[0]
+
+print(func2([3,5,5,3,5,9]))
+
+
+
